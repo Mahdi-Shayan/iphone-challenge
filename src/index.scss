@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  color: white;
+  height: 100%;
+  width: 100dvw;
+  border-color: #3b3b3b;
+  user-select: none;
+  overflow-x: hidden;
+  #root,
+  .app {
+    height: 100%;
+    width: 100%;
+    section {
+      height: 100vh;
+    }
+  }
+}
