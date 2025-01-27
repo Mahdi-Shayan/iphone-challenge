@@ -1,0 +1,51 @@
+@import "../../config.scss";
+
+#highlights {
+  background-color: $secondary;
+  padding: 50px 12%;
+  padding-bottom: 0;
+  .h-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    .h-title {
+      font-size: clamp(30px, 5vw, 45px);
+      font-weight: 600;
+      color: $gray-200;
+      transform: translateY(50px);
+      opacity: 0;
+    }
+    .links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      .link {
+        height: max-content;
+        display: flex;
+        gap: 8px;
+        color: $blue;
+        font-size: clamp(13.5px, 1.5vw, 16px);
+        cursor: pointer;
+        transition: border-bottom 0.2s;
+
+        transform: translateY(50px);
+        opacity: 0;
+        border-bottom: 1px solid transparent;
+        &:hover {
+          border-bottom: 1px solid;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 900px) {
+  #highlights {
+    padding: 50px 9%;
+    .h-header {
+      flex-direction: column;
+      align-items: start;
+      gap: 25px;
+      margin-bottom: 60px;
+    }
+  }
+}
