@@ -3,22 +3,24 @@ import { useEffect, useRef, useState } from "react";
 
 // Data
 import { hightlightsSlides } from "../../shared/data";
+
+// GSAP
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 
+// Component
+import Progress from "./VideoProgress";
+
+// Type
+import { IVideo } from "../../shared/types/highlights";
+
 gsap.registerPlugin(ScrollTrigger);
 
-interface IVideo {
-  videoId: number;
-  startPlay: boolean;
-  isEnd: boolean;
-  isPlaying: boolean;
-  isLastVideo: boolean;
-}
 
 function VideoCarousel() {
   const videoRef = useRef<HTMLVideoElement[]>([]);
+  const [replay, setReplay] = useState<boolean>(false);
 
   const [video, setVideo] = useState<IVideo>({
     videoId: 0,
@@ -28,7 +30,7 @@ function VideoCarousel() {
     isLastVideo: false,
   });
 
-  const { videoId, isEnd, isLastVideo, isPlaying, startPlay } = video;
+  const { videoId, isEnd, isPlaying, startPlay } = video;
 
   useGSAP(() => {
     gsap.to(".slider", {
@@ -49,29 +51,33 @@ function VideoCarousel() {
   // handle slider X translate ---------------
 
   useEffect(() => {
-    if (isEnd && videoId < videoRef.current.length) {
+    if ((isEnd && videoId < videoRef.current.length) || replay) {
       gsap.to(".slider", {
         x:
           window.innerWidth > 900
             ? `-${72 * videoId}vw`
-            : `-${92 * videoId}vw`,
+            : window.innerWidth > 450
+            ? `-${92 * videoId}vw`
+            : `-${94 * videoId}vw`,
       });
 
       setVideo((pre) => ({ ...pre, isEnd: false }));
-    } else if (startPlay && !isLastVideo) {
-      try {
-        videoRef.current[videoId].play();
-      } catch (e) {
-        setVideo((pre) => ({
-          ...pre,
-          startPlay: false,
-          isEnd: false,
-          isPlaying: false,
-          isLastVideo: true,
-        }));
-      }
+      setReplay(false);
+    } else if (startPlay && isPlaying && videoRef.current[videoId]) {
+      videoRef.current[videoId].play();
+
+    } else if (videoRef.current[videoId]) {
+      videoRef.current[videoId].pause();
+    } else if (!videoRef.current[videoId]) {
+      setVideo((pre) => ({
+        ...pre,
+        startPlay: false,
+        isEnd: false,
+        isPlaying: false,
+        isLastVideo: true,
+      }));
     }
-  }, [isPlaying, startPlay, videoId, isEnd]);
+  }, [isPlaying, startPlay, videoId, isEnd, replay]);
 
   // -------------------------------------------
 
@@ -113,6 +119,15 @@ function VideoCarousel() {
           </div>
         ))}
       </div>
+
+      {/* PROGRESS COMPONENTS*/}
+      <Progress
+        replay={replay}
+        videoRef={videoRef}
+        video={video}
+        setVideo={setVideo}
+        setReplay={setReplay}
+      />
     </>
   );
 }
