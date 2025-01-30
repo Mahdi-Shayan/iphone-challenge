@@ -1,0 +1,19 @@
+@import "../../config.scss";
+
+#model {
+  padding: 50px 12%;
+  display: grid;
+  grid-template-rows: 10% 80% 10%;
+  .m-title {
+    font-size: clamp(30px, 5vw, 45px);
+    font-weight: 600;
+    color: $gray-200;
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  .models {
+    height: 90%;
+    width: 100%;
+    padding: 10px;
+  }
+}
