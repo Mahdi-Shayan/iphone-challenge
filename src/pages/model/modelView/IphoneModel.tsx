@@ -1,6 +1,9 @@
 import * as THREE from "three";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
+import { useModelContext } from "../../../contexts/ModelContext";
+import { IContext } from "../../../shared/types/context";
+import { useEffect } from "react";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -72,10 +75,26 @@ type GLTFResult = GLTF & {
   // animations: GLTFAction[]
 };
 
-interface Props {}
-
 export function IphoneModel(props: JSX.IntrinsicElements["group"]) {
   const { nodes, materials } = useGLTF("/models/scene.glb") as GLTFResult;
+  const { modelType } = useModelContext() as IContext;
+
+
+  useEffect(() => {
+    Object.entries(materials).map((material) => {
+      if (
+        material[0] !== "zFdeDaGNRwzccye" &&
+        material[0] !== "ujsvqBWRMnqdwPx" &&
+        material[0] !== "hUlRcbieVuIiOXG" &&
+        material[0] !== "pIJKfZsazmcpEiU" &&
+        material[0] !== "jlzuBkUzuJqgiAK" &&
+        material[0] !== "xNrofRCqOXXHVZt"
+      ) {
+        material[1].color = new THREE.Color(modelType.color[0]);
+      }
+      material[1].needsUpdate = true;
+    });
+  }, [materials, modelType]);
 
   return (
     <group {...props} dispose={null}>

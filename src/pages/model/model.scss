@@ -1,10 +1,11 @@
 @import "../../config.scss";
 
 #model {
-  padding: 50px 12%;
-  display: grid;
-  grid-template-rows: 10% 80% 10%;
+  width: 100%;
+  height: 100%;
   .m-title {
+    padding: 50px 12%;
+    padding-bottom: 0;
     font-size: clamp(30px, 5vw, 45px);
     font-weight: 600;
     color: $gray-200;
@@ -12,8 +13,73 @@
     opacity: 0;
   }
   .models {
-    height: 90%;
+    height: 70%;
+    width: max-content;
+    padding: 10px 0;
+    display: flex;
+    .iphone-model {
+      width: 100vw;
+    }
+  }
+  .options-container {
+    height: 10%;
     width: 100%;
-    padding: 10px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    .options {
+      display: flex;
+      gap: 20px;
+      .color-changer {
+        width: 160px;
+        height: 42px;
+        background-color: $gray-300;
+        border-radius: 50px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        .color {
+          width: 20px;
+          height: 20px;
+          border-radius: 100%;
+          border: 2px solid transparent;
+          cursor: pointer;
+          &.active {
+            border: 2px solid;
+            transform: scale(1.1);
+          }
+        }
+      }
+
+      .size-changer {
+        height: 42px;
+        width: 90px;
+        background-color: $gray-300;
+        border-radius: 50px;
+
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        .size {
+          width: 37px;
+          height: 37px;
+          font-weight: 600;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 14px;
+          border-radius: 100%;
+          cursor: pointer;
+          &.active {
+            background-color: white;
+            color: black;
+          }
+        }
+      }
+    }
   }
 }
