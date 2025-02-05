@@ -6,13 +6,13 @@ import {
   Stage,
 } from "@react-three/drei";
 import { IphoneModel } from "./IphoneModel";
+import Loader from "./Loader";
 
 function IphoneModelContainer({ size }: { size: "small" | "large" }) {
-
   return (
     <>
       <Canvas>
-        <Suspense fallback={"loading"}>
+        <Suspense fallback={<Loader />}>
           <Stage environment="city" intensity={0.2}>
             <IphoneModel />
           </Stage>

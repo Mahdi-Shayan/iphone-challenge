@@ -8,21 +8,14 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import VideoCarousel from "./VideoCarousel";
+// Utils
+import { AnimatePageTitle } from "../../utils/AnimatePageTitle";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function Highlights() {
   useGSAP(() => {
-    gsap.to(".h-title", {
-      y: 0,
-      opacity: 1,
-      duration: 0.5,
-      ease: 'back.out',
-      scrollTrigger: {
-        trigger: ".h-header",
-        start: "200px bottom",
-      },
-    });
+    AnimatePageTitle(".h-title")
     gsap.to(".link", {
       y: 0,
       opacity: 1,

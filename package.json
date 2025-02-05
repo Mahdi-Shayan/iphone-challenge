@@ -18,6 +18,7 @@
     "react-dom": "^18.3.1",
     "react-reconciler": "^0.31.0",
     "react-scripts": "5.0.1",
+    "react-spinners": "^0.15.0",
     "react-test-render": "^1.1.2",
     "sass": "^1.83.4",
     "three": "^0.172.0",

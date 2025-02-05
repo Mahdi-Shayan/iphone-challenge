@@ -10,6 +10,8 @@ import ModelOptions from "./ModelOptions";
 // Context and Type
 import { useModelContext } from "../../contexts/ModelContext";
 import { IContext } from "../../shared/types/context";
+// Utils
+import { AnimatePageTitle } from "../../utils/AnimatePageTitle";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,16 +19,7 @@ function Model() {
   const { modelSize } = useModelContext() as IContext;
 
   useGSAP(() => {
-    gsap.to(".m-title", {
-      y: 0,
-      opacity: 1,
-      duration: 0.5,
-      ease: "back.out",
-      scrollTrigger: {
-        trigger: "#model",
-        start: "200px bottom",
-      },
-    });
+    AnimatePageTitle(".m-title")
   }, []);
   useGSAP(() => {
     if (modelSize === "large") {
