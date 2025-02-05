@@ -17,7 +17,6 @@ import { IVideo } from "../../shared/types/highlights";
 
 gsap.registerPlugin(ScrollTrigger);
 
-
 function VideoCarousel() {
   const videoRef = useRef<HTMLVideoElement[]>([]);
   const [replay, setReplay] = useState<boolean>(false);
@@ -57,15 +56,14 @@ function VideoCarousel() {
           window.innerWidth > 900
             ? `-${72 * videoId}vw`
             : window.innerWidth > 450
-            ? `-${92 * videoId}vw`
-            : `-${94 * videoId}vw`,
+            ? `-${88 * videoId}vw`
+            : `-${93 * videoId}vw`,
       });
 
       setVideo((pre) => ({ ...pre, isEnd: false }));
       setReplay(false);
     } else if (startPlay && isPlaying && videoRef.current[videoId]) {
       videoRef.current[videoId].play();
-
     } else if (videoRef.current[videoId]) {
       videoRef.current[videoId].pause();
     } else if (!videoRef.current[videoId]) {

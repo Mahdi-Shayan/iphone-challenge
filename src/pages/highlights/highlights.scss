@@ -1,8 +1,9 @@
 @import "../../config.scss";
 
 #highlights {
+  height: 100vh;
   background-color: $secondary;
-  padding: 50px 12%;
+  padding: 50px 5%;
   padding-bottom: 0;
   .h-header {
     display: flex;

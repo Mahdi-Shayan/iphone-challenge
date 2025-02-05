@@ -34,7 +34,7 @@
   gap: 15px;
   margin: 30px 0;
   .progress {
-    width: 160px;
+    width: 180px;
     height: 42px;
     background-color: $gray-300;
     border-radius: 50px;
@@ -48,6 +48,15 @@
       background-color: $gray-200;
       border-radius: 100%;
       overflow: hidden;
+      position: relative;
+      .step-span {
+        position: absolute;
+        left: -100%;
+        background-color: white;
+        border-radius: 20px;
+        height: 100%;
+        width: 100%;
+      }
     }
   }
   .play-progress-btn {
