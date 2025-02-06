@@ -1,5 +1,6 @@
 import Navbar from "./components/nav/Nav";
 import { ModelContextProvider } from "./contexts/ModelContext";
+import Features from "./pages/features/Features";
 
 // Pages
 import Hero from "./pages/hero/Hero";
@@ -16,6 +17,7 @@ function App() {
         <ModelContextProvider>
           <Model />
         </ModelContextProvider>
+        <Features />
       </main>
     </>
   );
