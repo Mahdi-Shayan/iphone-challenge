@@ -53,7 +53,8 @@
     .h-detail {
       width: 45%;
       p {
-        font-size: clamp(13px, 1vw, 18px);
+        font-size: clamp(14px, 1.5vw, 17px);
+        line-height: clamp(20px, 2vw, 25px);
         font-weight: 500;
         color: $gray-200;
         margin-bottom: 20px;

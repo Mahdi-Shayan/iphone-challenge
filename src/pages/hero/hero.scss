@@ -11,10 +11,11 @@
   padding-right: 6%;
   padding-left: 4%;
   .hero-title {
-    font-size: clamp(25px, 3.5vw, 33px);
+    font-size: clamp(20px, 2.3vw, 26px);
     color: $gray-200;
     font-weight: 600;
     text-align: center;
+    margin-bottom: 15px;
 
     transform: translateY(-50px);
     opacity: 0;
@@ -30,9 +31,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: clamp(90px, 13vw, 120px);
+      width: clamp(80px, 8vw, 100px);
       margin: 20px auto;
-      padding: clamp(5px, 1vw, 11px) 0;
+      padding: clamp(5px, 0.8vw, 10px) 0;
       border: 1px solid transparent;
 
       background-color: $blue;
