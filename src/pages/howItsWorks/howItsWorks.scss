@@ -1,0 +1,84 @@
+@import '../../config.scss';
+
+#how-works {
+  padding: 10% 12%;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(60px, 5vw, 100px);
+  .h-header {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    .chip-img {
+      width: clamp(120px, 20vw, 220px);
+      margin-bottom: 20px;
+    }
+    .h-title {
+      font-size: clamp(18px, 4vw, 35px);
+    }
+    p {
+      font-size: clamp(15px, 1vw, 18px);
+      color: $gray-200;
+    }
+  }
+  .gameplay-container {
+    width: 90%;
+    height: max-content;
+    text-align: center;
+    color: $gray-200;
+    background-size: contain;
+    background-position: center;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    .gameplay-frame {
+      width: 100%;
+    }
+    .gameplay {
+      position: absolute;
+      width: 96%;
+      top: 4%;
+      left: 2%;
+      border-radius: 6%;
+      z-index: -1;
+    }
+  }
+  .h-details-container {
+    display: flex;
+    justify-content: space-between;
+    .h-detail {
+      width: 45%;
+      p {
+        font-size: clamp(13px, 1vw, 18px);
+        font-weight: 500;
+        color: $gray-200;
+        margin-bottom: 20px;
+        span {
+          color: white;
+        }
+      }
+      .bold {
+        color: white;
+        margin-bottom: 20px;
+        font-size: clamp(25px, 4vw, 40px);
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .h-details-container {
+    flex-direction: column;
+    .h-detail {
+      min-width: 90%;
+      .bold {
+        font-size: clamp(20px, 6vw, 28px) !important;
+      }
+    }
+  }
+}

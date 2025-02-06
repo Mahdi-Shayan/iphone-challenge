@@ -5,6 +5,7 @@ import Features from "./pages/features/Features";
 // Pages
 import Hero from "./pages/hero/Hero";
 import Highlights from "./pages/highlights/Highlights";
+import HowItsWorks from "./pages/howItsWorks/HowItsWorks";
 import Model from "./pages/model/Model";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Model />
         </ModelContextProvider>
         <Features />
+        <HowItsWorks />
       </main>
     </>
   );
