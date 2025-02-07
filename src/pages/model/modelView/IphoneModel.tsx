@@ -76,7 +76,7 @@ type GLTFResult = GLTF & {
 };
 
 export function IphoneModel(props: JSX.IntrinsicElements["group"]) {
-  const { nodes, materials } = useGLTF("/models/scene.glb") as GLTFResult;
+  const { nodes, materials } = useGLTF("/portfolio/iphone-challenge/models/scene.glb") as GLTFResult;
   const { modelType } = useModelContext() as IContext;
 
 
@@ -257,4 +257,4 @@ export function IphoneModel(props: JSX.IntrinsicElements["group"]) {
   );
 }
 
-useGLTF.preload("/models/scene.glb");
+useGLTF.preload("/portfolio/iphone-challenge/models/scene.glb");
