@@ -39,11 +39,11 @@ function Highlights() {
           <div className="links">
             <p className="link">
               Watch the film
-              <img src={watchImg} />
+              <img src={watchImg} alt="Watch the film"/>
             </p>
             <p className="link">
               Watch the event
-              <img src={rightImg} />
+              <img src={rightImg} alt="Watch the event"/>
             </p>
           </div>
         </div>
