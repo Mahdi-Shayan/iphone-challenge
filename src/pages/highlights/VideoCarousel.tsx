@@ -1,11 +1,11 @@
 import "./videoCarousel.scss";
 import { useEffect, useRef, useState } from "react";
+import { motion } from "motion/react";
 
 // Data
 import { hightlightsSlides } from "../../shared/data";
 
 // GSAP
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 
@@ -31,22 +31,6 @@ function VideoCarousel() {
 
   const { videoId, isEnd, isPlaying, startPlay } = video;
 
-  useGSAP(() => {
-    gsap.to(".slider", {
-      scrollTrigger: {
-        trigger: ".slider",
-        start: "70% bottom",
-        onUpdate: () => {
-          setVideo((pre) => ({
-            ...pre,
-            startPlay: true,
-            isPlaying: true,
-          }));
-        },
-      },
-    });
-  }, []);
-
   // handle slider X translate ---------------
 
   useEffect(() => {
@@ -54,10 +38,8 @@ function VideoCarousel() {
       gsap.to(".slider", {
         x:
           window.innerWidth > 900
-            ? `-${72 * videoId}vw`
-            : window.innerWidth > 450
-            ? `-${88 * videoId}vw`
-            : `-${93 * videoId}vw`,
+            ? `-${(100 / hightlightsSlides.length) * videoId}%`
+            : `-${(102 / hightlightsSlides.length) * videoId}%`,
       });
 
       setVideo((pre) => ({ ...pre, isEnd: false }));
@@ -86,7 +68,16 @@ function VideoCarousel() {
 
   return (
     <>
-      <div className="slider">
+      <motion.div
+        viewport={{ margin: "-400px 0px 400px 0px" }}
+        onViewportEnter={() =>
+          setVideo((pre) => ({ ...pre, startPlay: true, isPlaying: true }))
+        }
+        onViewportLeave={() =>
+          setVideo((pre) => ({ ...pre, isPlaying: false }))
+        }
+        className="slider"
+      >
         {hightlightsSlides.map((item) => (
           <div className="slide" key={item.id}>
             <video
@@ -116,7 +107,7 @@ function VideoCarousel() {
             </div>
           </div>
         ))}
-      </div>
+      </motion.div>
 
       {/* PROGRESS COMPONENTS*/}
       <Progress

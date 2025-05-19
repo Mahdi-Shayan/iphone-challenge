@@ -22,32 +22,33 @@ function Progress({
   const { isPlaying, isLastVideo, videoId, startPlay } = video;
 
   useEffect(() => {
-    if (!videoRef.current[videoId] || !stepSpanRef.current[videoId]) return;
-  
+    if (!videoRef.current[videoId] || !stepSpanRef.current[videoId])
+      return;
+
     const video = videoRef.current[videoId];
     const stepSpan = stepSpanRef.current[videoId];
-  
+
     const updateProgress = () => {
       const progress = (video.currentTime / video.duration) * 100; // درصد پیشرفت ویدیو
       gsap.to(stepSpan, {
         xPercent: progress + 10, // حرکت انیمیشن مطابق با ویدیو
-        ease: "power2.out",       
+        ease: "power2.out",
       });
     };
-  
+
     // وقتی ویدیو تموم شد، به حالت اولیه برگردیم
     const handleVideoEnd = () => {
       gsap.to(stepSpan, { xPercent: -100 });
     };
-  
+
     video.addEventListener("timeupdate", updateProgress);
     video.addEventListener("ended", handleVideoEnd);
-  
+
     return () => {
       video.removeEventListener("timeupdate", updateProgress);
       video.removeEventListener("ended", handleVideoEnd);
     };
-  }, [videoId]);
+  }, [videoId, videoRef]);
 
   useGSAP(() => {
     if (startPlay && isPlaying && videoRef.current[videoId]) {
