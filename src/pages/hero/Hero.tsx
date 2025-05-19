@@ -42,7 +42,7 @@ function Hero() {
     <>
       <section className="hero">
         <p className="hero-title">iPhone 15 Pro</p>
-        <video autoPlay muted playsInline={true} key={videoSrc}>
+        <video autoPlay muted playsInline={true} key={videoSrc} preload="true">
           <source src={videoSrc} />
         </video>
         <div className="cta">

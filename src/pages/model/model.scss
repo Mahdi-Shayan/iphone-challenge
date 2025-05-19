@@ -14,11 +14,12 @@
   }
   .models {
     height: 70%;
-    width: max-content;
+    width: 200vw;
     padding: 10px 0;
     display: flex;
+    justify-content: space-around;
     .iphone-model {
-      width: 100vw;
+      width: 300px;
     }
   }
   .options-container {

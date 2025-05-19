@@ -18,7 +18,6 @@ function App() {
     const video = document.createElement("video");
     video.src = window.innerWidth > 760 ? heroVideo : smallHeroVideo;
     video.oncanplaythrough = () => setLoaded(true);
-    video.load();
   }, []);
 
   return (

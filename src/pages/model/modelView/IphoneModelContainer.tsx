@@ -19,8 +19,7 @@ function IphoneModelContainer({ size }: { size: "small" | "large" }) {
           <OrbitControls enableZoom={false} />
           <PerspectiveCamera
             position={[0, 0, 1]}
-            zoom={size === "small" ? 0.9 : 1}
-            makeDefault
+            zoom={size === "small" ? 1.7 : 1.9}            makeDefault
           />
         </Suspense>
         <directionalLight />
