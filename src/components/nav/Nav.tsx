@@ -4,9 +4,6 @@ import "./nav.scss";
 // Utils
 import { navLists } from "../../shared/data";
 
-// assets
-import logo from "../../assets/images/apple.svg";
-
 // GSAP
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -58,7 +55,7 @@ function Navbar() {
           </div>
         )}
         <div className="logo">
-          <img src={logo} alt="apple" />
+          <img src="/assets/images/apple.svg" alt="apple" />
         </div>
         <ul className="menu">
           {navLists.map((item, ind) => {

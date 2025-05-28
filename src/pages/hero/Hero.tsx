@@ -5,22 +5,20 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 function Hero() {
-
   useGSAP(() => {
-    gsap.to('.cta', {
+    gsap.to(".cta", {
       y: 0,
       opacity: 1,
       delay: 3,
-    })
-    gsap.to('.hero-title', {
+    });
+    gsap.to(".hero-title", {
       y: 0,
       opacity: 1,
       delay: 3,
-    })
-  }, [])
+    });
+  }, []);
 
-
-  const [videoSrc, setVideoSrc] = useState<"heroVideo" | "smallHeroVideo">(
+  const [videoSrc, setVideoSrc] = useState(
     window.innerWidth > 760 ? heroVideo : smallHeroVideo
   );
 
@@ -42,7 +40,13 @@ function Hero() {
     <>
       <section className="hero">
         <p className="hero-title">iPhone 15 Pro</p>
-        <video autoPlay muted playsInline={true} key={videoSrc} preload="true">
+        <video
+          autoPlay
+          muted
+          playsInline={true}
+          key={videoSrc}
+          preload="true"
+        >
           <source src={videoSrc} />
         </video>
         <div className="cta">
