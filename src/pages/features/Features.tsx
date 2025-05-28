@@ -44,10 +44,10 @@ function Features() {
           </video>
           <div className="f-images-container">
             <div className="f-img-container">
-              <img className="f-img" src={explore1Img} />
+              <img className="f-img" alt="iPhone 15 Pro in titanium" src={explore1Img} />
             </div>
             <div className="f-img-container">
-              <img className="f-img" src={explore2Img} />
+              <img className="f-img" alt="iPhone 15 Pro in titanium" src={explore2Img} />
             </div>
           </div>
           <div className="f-details">
