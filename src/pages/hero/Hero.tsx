@@ -1,10 +1,12 @@
 import "./hero.scss";
-import { useEffect, useState } from "react";
-import { heroVideo, smallHeroVideo } from "../../utils/index";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
-function Hero() {
+interface Props {
+  videoSrc: string;
+}
+
+function Hero({ videoSrc }: Props) {
   useGSAP(() => {
     gsap.to(".cta", {
       y: 0,
@@ -16,24 +18,6 @@ function Hero() {
       opacity: 1,
       delay: 3,
     });
-  }, []);
-
-  const [videoSrc, setVideoSrc] = useState(
-    window.innerWidth > 760 ? heroVideo : smallHeroVideo
-  );
-
-  useEffect(() => {
-    function handleVideoSrc(): void {
-      if (window.innerWidth > 760) {
-        setVideoSrc(heroVideo);
-      } else {
-        setVideoSrc(smallHeroVideo);
-      }
-    }
-
-    window.addEventListener("resize", handleVideoSrc);
-
-    return () => window.addEventListener("resize", handleVideoSrc);
   }, []);
 
   return (

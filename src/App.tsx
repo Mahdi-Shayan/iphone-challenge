@@ -2,9 +2,7 @@ import { useEffect, useState } from "react";
 import Navbar from "./components/nav/Nav";
 import { ModelContextProvider } from "./contexts/ModelContext";
 import Features from "./pages/features/Features";
-// Utils
 import { heroVideo, smallHeroVideo } from "./utils/index";
-// Pages
 import Hero from "./pages/hero/Hero";
 import Highlights from "./pages/highlights/Highlights";
 import HowItsWorks from "./pages/howItsWorks/HowItsWorks";
@@ -12,21 +10,48 @@ import Model from "./pages/model/Model";
 import { SyncLoader } from "react-spinners";
 
 function App() {
-  const [loaded, setLoaded] = useState<boolean>(false);
+  const [videoSrc, setVideoSrc] = useState<string | null>(null);
+  const [src, setSrc] = useState<string>("");
 
   useEffect(() => {
-    const video = document.createElement("video");
-    video.src = window.innerWidth > 760 ? heroVideo : smallHeroVideo;
-    video.oncanplaythrough = () => setLoaded(true);
-  }, []);
+    function handleResize() {
+      if (window.innerWidth > 760) {
+        setSrc(heroVideo);
+      } else {
+        setSrc(smallHeroVideo);
+      }
+    }
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    let videoUrl: string;
+
+    fetch(src)
+      .then((res) => res.blob())
+      .then((blob) => {
+        videoUrl = URL.createObjectURL(blob);
+        setVideoSrc(videoUrl);
+      })
+      .catch((err) => {
+        console.error("Video download failed", err);
+      });
+
+    return () => {
+      if (videoUrl) {
+        URL.revokeObjectURL(videoUrl);
+      }
+    };
+  }, [src]);
 
   return (
     <>
-      {loaded ? (
+      {videoSrc ? (
         <>
           <Navbar />
           <main className="app">
-            <Hero />
+            <Hero videoSrc={videoSrc} />
             <Highlights />
             <ModelContextProvider>
               <Model />
